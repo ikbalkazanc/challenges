@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="7.2.3" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Sshared\Tesodev.Case.FastHttpClient\Tesodev.Case.FastHttpClient.csproj" />
+    <ProjectReference Include="..\..\..\Sshared\Tesodev.Case.Shared\Tesodev.Case.Shared.csproj" />
+    <ProjectReference Include="..\Tesodev.Case.Order.Infrastructure\Tesodev.Case.Order.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Consumers\" />
+  </ItemGroup>
+
+</Project>

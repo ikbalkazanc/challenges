@@ -1,0 +1,11 @@
+﻿@model List<Pazarama.Homework.Core.Entity.Category>
+
+<div class="list-group">
+	<a href="/books/index" class="list-group-item list-group-item-action @(ViewBag.SelectedGenre==null?"active":"")">Tüm Kategoriler</a>
+	@foreach(var genre in Model)
+	{
+		<a href="/books/index?categoryId=@genre.Id" class="list-group-item list-group-item-action @(ViewBag.SelectedGenre==genre.Id.ToString()?"active":"")">
+			@genre.Name
+		</a>
+	}
+</div>

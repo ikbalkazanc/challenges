@@ -1,0 +1,1 @@
+export const circle = {margin:'auto',height:'4em',width:'4em',borderRadius:'100px',backgroundColor:'red'}

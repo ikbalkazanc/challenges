@@ -1,0 +1,7 @@
+﻿@model List<Pazarama.Homework.Core.Entity.Book>
+<div class="list-group">
+	@foreach(var genre in Model)
+	{
+		<a href="#" class="list-group-item list-group-item-action">@genre.Title</a>
+	}
+</div>

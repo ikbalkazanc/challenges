@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "ad226256-1b60-4545-818d-cf1e0348ceaf",
+		"name": "Tesodev Case",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/customers/91f59015-86e1-4f37-bd09-6ce07d8a92fa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"customers",
+								"91f59015-86e1-4f37-bd09-6ce07d8a92fa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ahmet\",\r\n    \"email\":\"test2@test.com\",\r\n    \"address\":{\r\n        \"addressLine\":\"alm street\",\r\n        \"city\":\"ist-an21k\",\r\n        \"country\":\"tr\",\r\n        \"cityCode\":\"123123\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ahmet\",\r\n    \"email\":\"test2@test.com\",\r\n    \"address\":{\r\n        \"addressLine\":\"alm street\",\r\n        \"city\":\"ist-an21k\",\r\n        \"country\":\"tr\",\r\n        \"cityCode\":\"123123\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/customers/c9cc7b72-4d47-40cf-9516-ea0acf0e2b00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"customers",
+								"c9cc7b72-4d47-40cf-9516-ea0acf0e2b00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"b3a40e83-4b1a-47f4-915d-cf327bdb6b10\",\r\n    \"name\":\"updated ahmet\",\r\n    \"address\":{\r\n        \"addressLine\":\"AAAA street\",\r\n        \"city\":\"AAA\",\r\n        \"country\":\"AA\",\r\n        \"cityCode\":\"1220\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Customer Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Order Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\":\"b3a40e83-4b1a-47f4-915d-cf327bdb6b10\",\r\n    \"productId\":\"ce24ed63-9c3b-4f09-bfd7-9287924c2ada\",\r\n    \"quantity\":10,\r\n    \"price\":100.0,\r\n    \"status\":\"in-way\",\r\n    \"address\":{\r\n        \"addressLine\":\"alm street\",\r\n        \"city\":\"ist-an21k\",\r\n        \"country\":\"tr\",\r\n        \"cityCode\":\"123123\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5011/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5011",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5011/api/orders/b36bd1b2-69cb-4da5-9c2f-815eb9a13113",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5011",
+							"path": [
+								"api",
+								"orders",
+								"b36bd1b2-69cb-4da5-9c2f-815eb9a13113"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"ce24ed63-9c3b-4f09-bfd7-9287924c2ada\",\r\n    \"quantity\":10,\r\n    \"price\":100.0,\r\n    \"status\":\"in-way\",\r\n    \"address\":{\r\n        \"addressLine\":\"alm street\",\r\n        \"city\":\"ist-an21k\",\r\n        \"country\":\"tr\",\r\n        \"cityCode\":\"123123\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderId\":\"\",\r\n    \"Status\":\"ooo az kaldı\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5011/api/orders/changestatus/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5011",
+							"path": [
+								"api",
+								"orders",
+								"changestatus",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

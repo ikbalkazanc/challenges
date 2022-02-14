@@ -1,0 +1,171 @@
+﻿@using Coredet.Common.Dto
+@using Coredet.Core.Constant
+@using Microsoft.AspNetCore.Http
+@model ProductsViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .products-div { background-color: #A2D5AB; }
+
+    .product-card { margin: 0px 10px 0px 10px; }
+
+    .product-image {
+        height: 8rem;
+        width: auto
+    }
+
+    .product-context {
+        text-align: center;
+        padding: 0px;
+    }
+
+    .product-title {
+        font-size: small;
+        margin: 0px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-8" ">
+            <div class="row">
+                @foreach (var item in Model.Products)
+                {
+                    <div class="col-4">
+                        <div class="card product-card  shadow-lg p-3 mb-5 bg-body products-div">
+                            <img src="@item.ImageUrl" class="card-img-top product-image">
+                            <div class="card-body product-context">
+                                <h5 class="card-title product-title">@item.Name</h5>
+                                <button value="@item.Id" class="btn btn-success addtocard product-title">Sepete Ekle @item.Price₺ </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="alert alert-warning" role="alert">
+                <p>
+                    <b id="basketitle">Sepet</b>
+                </p>
+                <hr style="border-color: black">
+
+                <div>
+                    <ul class="list-group" id="basketlist">
+                    </ul>
+                </div>
+                <hr style="border-color: black">
+                <div class="text-xl-right">
+                    <p>
+                        <b id="baskettotal">Total: 0</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/jquery/jquery.min.js"></script>
+<style>
+    .basketlisttype {
+        margin: 2px 0px;
+        list-style-type: none;
+    }
+
+    .basketbuttons { padding: 2px 5px; }
+
+</style>
+
+
+<script>
+    $(document).ready(function() {
+        debugger
+        getBasketRequest();
+        $(".addtocard").click(function() {
+            var count = $("#basketcount-" + $(this).val()).val()
+            if (count == undefined) {
+                setBasketRequest($(this).val(), 1);
+            } else {
+                setBasketRequest($(this).val(), parseInt(count) + 1);
+            }
+
+        });
+    });
+
+    function editBasket(data) {
+        console.log(data)
+        $("#basketlist").empty();
+        $('#basketitle').text("Sepet Id :" + data.basketId)
+        $('#basketitle').val(data.basketId)
+
+        data.items.forEach((value) => {
+            let listitem = "<li class='basketlisttype'><div class='row'><div class='col-6' id='productid'>" + value.name + "  : </div><div class='col-3'>";
+            listitem += "<div class='btn-group' role='group' >";
+            listitem += "<button type='button' onclick='basketDecreaseButtonOnClick(\"" + value.productId + "\"," + (value.count - 1) + ")'  class='btn basketbuttons btn-secondary'>-</button>";
+            listitem += "<button type='button' id='basketcount-" + value.productId + "' value=" + value.count + " class='btn btn-light disabled basketbuttons'>" + value.count + "</button>";
+            listitem += "<button type='button'  onclick='basketAddButtonOnClick(\"" + value.productId + "\"," + (value.count + 1) + ")' class='btn btn-secondary basketbuttons'>+</button>";
+            listitem += "</div></div><div class='col-3'> " + value.price + "₺</div></div></li>";
+            $("#basketlist").append(listitem);
+        })
+
+        $("#baskettotal").text("Total : " + data.totalPrice + " TL")
+    }
+
+    function basketAddButtonOnClick(productid, count) {
+        setBasketRequest(productid, count);
+    }
+
+    function basketDecreaseButtonOnClick(productid, count) {
+        setBasketRequest(productid, count);
+    }
+
+    function setBasketRequest(productId, count) {
+        var data = {
+            productId: productId,
+            userId: '@Context.User.Claims.FirstOrDefault(x => x.Type == "userid")?.Value',
+            count: count,
+            basketId: $("#basketitle").val()
+        }
+        debugger
+        var settings = {
+            'cache': false,
+            'dataType': "json",
+            "crossDomain": true,
+            "url": '@ConnectionStrings.ApiUrl' + "api/baskets/addtocard",
+            "method": "POST",
+            "headers": {
+                "accept": "application/json",
+                "Access-Control-Allow-Origin": "no-cors",
+                "Content-Type": "application/json"
+            },
+            "data": JSON.stringify(data),
+            "Access-Control-Allow-Origin": "no-cors"
+        }
+
+        $.ajax(settings).done(function(response) {
+
+            editBasket(response.data)
+        })
+    }
+
+    function getBasketRequest() {
+        var userid = '@Context.User.Claims.FirstOrDefault(x => x.Type == "userid")?.Value'
+        var data = {}
+        var settings = {
+            "url": '@ConnectionStrings.ApiUrl' + "api/baskets/getbasket/" + userid,
+            "method": "GET",
+            "headers": {
+                "Access-Control-Allow-Origin": "no-cors"
+            },
+            "Access-Control-Allow-Origin": "no-cors"
+        }
+
+        $.ajax(settings).done(function(response) {
+            editBasket(response.data)
+        })
+    }
+</script>
